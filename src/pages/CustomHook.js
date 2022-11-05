@@ -1,8 +1,14 @@
 import React, { useState } from "react";
-// import square from "./images/square.png";
+
 
 function CustomHook() {
   const [value, setValue] = useState(0);
+  const [error, setError] = useState(false);
+  if (error) {throw Error("Something went wrong");}
+
+  const handleError = () => {
+    setError(true);
+  }
   const handleIncrement = () => {
     setValue((count) => count + 1);
   };
@@ -32,6 +38,8 @@ function CustomHook() {
           <button className="decrease" onClick={handleDecrement}>
             Decrement
           </button>
+
+          <button className="testPage" onClick={handleError}>TestPage</button>
         </div>
       </div>
     </>

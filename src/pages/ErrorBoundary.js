@@ -1,52 +1,24 @@
-import * as React from 'react'
-import {ErrorBoundary} from 'react-error-boundary'
+import React from 'react';
 
-function ErrorFallback({error, resetErrorBoundary}) {
-  return (
-    <div role="alert">
-      <p>Something went wrong:</p>
-      <pre style={{color: 'red'}}>{error.message}</pre>
-      <button onClick={resetErrorBoundary}>Try again</button>
-    </div>
-  )
-}
-
-function Bomb({username}) {
-  if (username === 'bomb') {
-    throw new Error('💥 CABOOM 💥')
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
   }
-  return `Hi ${username}`
-}
 
-function App() {
-  const [username, setUsername] = React.useState('')
-  const usernameRef = React.useRef(null)
+  static getDerivedStateFromError(error) {
+    // Update state so the next render will show the fallback UI.
+    return { hasError: true };
+  }
 
-  return (
-    <div>
-      <label>
-        {`Username (don't type "bomb"): `}
-        <input
-          placeholder={`type "bomb"`}
-          value={username}
-          onChange={e => setUsername(e.target.value)}
-          ref={usernameRef}
-        />
-      </label>
-      <div>
-        <ErrorBoundary
-          FallbackComponent={ErrorFallback}
-          onReset={() => {
-            setUsername('')
-            usernameRef.current.focus()
-          }}
-          resetKeys={[username]}
-        >
-          <Bomb username={username} />
-        </ErrorBoundary>
-      </div>
-    </div>
-  )
+  render() {
+    if (this.state.hasError) {
+      // You can render any custom fallback UI
+      return <h1 className='wrong'>Something went wrong.</h1>;
+    }
+
+    return this.props.children; 
+  }
 }
 
 export default ErrorBoundary;
