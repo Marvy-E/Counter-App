@@ -13,6 +13,9 @@ root.render(
         <App />
       </ErrorBoundary>
     </HelmetProvider>
+    <ErrorBoundary>
+      <App />
+    </ErrorBoundary>
   </React.StrictMode>
 );
 
