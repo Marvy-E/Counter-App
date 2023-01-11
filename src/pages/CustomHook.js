@@ -1,14 +1,10 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 
 function CustomHook() {
   const [value, setValue] = useState(0);
-  const [error, setError] = useState(false);
-  if (error) {throw Error("Something went wrong");}
-
-  const handleError = () => {
-    setError(true);
-  }
+  
   const handleIncrement = () => {
     setValue((count) => count + 1);
   };
@@ -23,7 +19,13 @@ function CustomHook() {
 
   return (
     <>
-      {/* <img src={square.jpg} alt="square"></img> */}
+    <Helmet>
+      <title>Counter</title>
+      <meta
+        name="description"
+        content="Increment and decrement counter" />
+        <link rel="canonical" href="/counter" />
+    </Helmet>
       <h2>Counter App made with custom hook</h2>
       <div className="main-box">
         <h1>Counter App</h1>
@@ -38,8 +40,6 @@ function CustomHook() {
           <button className="decrease" onClick={handleDecrement}>
             Decrement
           </button>
-
-          <button className="testPage" onClick={handleError}>TestPage</button>
         </div>
       </div>
     </>

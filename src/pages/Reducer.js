@@ -1,4 +1,5 @@
 import { useReducer } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 function countReducer(initialState = 0, action) {
   switch (action) {
@@ -18,6 +19,11 @@ function Reducer() {
 
   return (
     <>
+    <Helmet>
+      <title>useReducer</title>
+      <meta name="description" content="increment and decrement useReducer" />
+      <link rel="canonical" href="/useReducer" />
+    </Helmet>
     <h2>Counter App made with useReducer</h2>
     <div className="box">
       <h1 className='reducer-head'>Reducer</h1>

@@ -150,7 +150,35 @@ button:hover{
   left: 50%;
   position: absolute;
   transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
+
+.testPage{
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: #cb317b;
+  padding: 20px;
+  border-radius: 30px;
+}
+
+.not-found {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: #cb317b;
+  padding: 20px;
+  border-radius: 30px;
+  color: #fff;
+}
+
 
 @media screen and (max-width: 768px) {
     .nav-links  {

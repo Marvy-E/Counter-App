@@ -4,6 +4,7 @@ import CustomHook from "./pages/CustomHook";
 import PageNotFound from "./pages/PageNotFound";
 import  Reducer  from "./pages/Reducer";
 import './index.css';
+import { TestPage } from "./pages/TestPage";
 
 function App () {
   const [click, setClick] = useState(false);
@@ -22,6 +23,7 @@ function App () {
             <li className="nav-links">
         <Link to="/">CustomHook</Link>
         <Link to="/reducer">Reducer</Link>
+        <Link to="/testPage">TestPage</Link>
             </li>
           </ul>
         </div>
@@ -37,7 +39,7 @@ function App () {
           <Route path="/" element={<CustomHook />}></Route>
           <Route path="reducer" element={<Reducer />}></Route>
           <Route path="*" element={<PageNotFound />}></Route>
-          {/* <Route path="errorBoundary" element={<ErrorBoundary />}></Route> */}
+          <Route path="testPage" element={<TestPage />}></Route>
         </Routes>
       </div>
     </Router>
